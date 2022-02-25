@@ -32,7 +32,8 @@ export const Profile = styled.div`
 `
 
 export const BalanceChartCanvas = styled.canvas`
-  max-width: 200px;  
+  max-width: 150px;
+  margin-left: 30px;
 `
 
 export const ImpText = styled.span`
@@ -41,10 +42,11 @@ export const ImpText = styled.span`
 `
 
 export const FrequentTxContainer = styled.div`
-  min-width: 340px;
-  min-height: 200px;
+  min-width: 440px;
+  min-height: 240px;
+  margin-left: 50px;
   background-color: "#15ffd4";
   /* border: 0.5px solid black; */
   border-radius: 15px;
-  box-shadow: 2px 4px 50px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 4px 50px ${props => props.theme.isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'} ;
 `

@@ -3,10 +3,11 @@ import styled from "styled-components"
 export const FlexContainer1 = styled.div`
   width: 100%;
   height: 42vh;
-  background-color: #ffffff;
+  background-color: ${props => props.theme.background};
   display: flex;
   flex-direction: row;
-  padding: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
 `
 export const FlexContainer2 = styled.div`
   width: 100%;
