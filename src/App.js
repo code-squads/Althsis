@@ -13,9 +13,12 @@ import {
   CardFlex3,
   CardFlex4,
   Balance,
-  FlexContainer1,
-  FlexContainer2
 } from './RightContainer.styled';
+import AccountsOverview from './components/AccountsOverview';
+import { 
+  FlexContainer1, 
+  FlexContainer2 
+} from './LeftContainer.styled';
 
 const App = () => {
   return (
@@ -26,7 +29,7 @@ const App = () => {
       <MainContainer>
         <LeftContainer>
           <FlexContainer1>
-
+            <AccountsOverview />
           </FlexContainer1>
           <FlexContainer2>
 
