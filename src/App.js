@@ -5,17 +5,9 @@ import {
   MainContainer,
   RightContainer
 } from './App.styled';
-import {
-  Card,
-  CardContainer,
-  CardFlex1,
-  CardFlex2,
-  CardFlex3,
-  CardFlex4,
-  Balance,
-} from './RightContainer.styled';
 import AccountsOverview from './components/AccountsOverview';
 import Navbar from './components/Navbar';
+import Cards from './components/Cards.js';
 import { 
   FlexContainer1, 
   FlexContainer2 
@@ -33,7 +25,7 @@ const App = () => {
       <ThemeProvider>
         <Navbar />
         <MainContainer>
-          <LeftContainer theme={theme}>
+          <LeftContainer>
             <FlexContainer1>
               <AccountsOverview />
             </FlexContainer1>
@@ -41,29 +33,8 @@ const App = () => {
 
             </FlexContainer2>
           </LeftContainer>
-          <RightContainer theme={theme}>
-            <CardContainer>
-              <Card>
-                <CardFlex1>
-                  <img style={{marginRight: "10px"}} src='./chip.svg'></img>
-                  Axis Bank
-                </CardFlex1>
-                <CardFlex2>
-                  **** **** **** 1234
-                </CardFlex2>
-                <CardFlex3>
-                  AccountHolder Name
-                </CardFlex3>
-                <CardFlex4>
-                  Rupesh Raut 
-                  <Balance>₹ 87,302.00</Balance>
-                </CardFlex4>
-              </Card>
-              <Card></Card>
-              <Card></Card>
-              <Card></Card>
-              <Card></Card>
-            </CardContainer>
+          <RightContainer>
+            <Cards></Cards>
           </RightContainer>
         </MainContainer>
       </ThemeProvider>

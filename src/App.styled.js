@@ -16,5 +16,6 @@ export const LeftContainer = styled.div`
 export const RightContainer = styled.div`
     width: 43%;
     height: 100%;
+    overflow-y: scroll;
     /* background-color: #e8e8e8; */
 `
