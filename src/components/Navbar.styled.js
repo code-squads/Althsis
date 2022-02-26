@@ -1,10 +1,10 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const NavbarStyled = styled.div`
   width: 100%;
   height: 60px;
-  background-color: ${props => props.theme.background};
-`
+  background-color: ${(props) => props.theme.background};
+`;
 
 export const Profile = styled.div`
   display: block;
@@ -31,4 +31,4 @@ export const Profile = styled.div`
       height: 100%;
     }
   }
-`
+`;
