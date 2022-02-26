@@ -7,6 +7,11 @@ export const CardContainer = styled.div`
     grid-auto-rows: 160px;
     grid-gap: 4%;
     justify-content: center;
+    overflow-y: scroll;
+    overflow-y: -moz-scrollbars-none;
+    &::-webkit-scrollbar { 
+        width: 0 !important;
+    }
 `
 export const Card = styled.div`
     height: 162px;

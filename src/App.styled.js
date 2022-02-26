@@ -17,5 +17,9 @@ export const RightContainer = styled.div`
     width: 43%;
     height: 100%;
     overflow-y: scroll;
+    overflow-y: -moz-scrollbars-none;
+    &::-webkit-scrollbar { 
+        width: 0 !important;
+    }
     /* background-color: #e8e8e8; */
 `
