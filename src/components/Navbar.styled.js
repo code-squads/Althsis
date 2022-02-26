@@ -1,16 +1,16 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const NavbarStyled = styled.div`
   width: 100%;
   height: 60px;
   max-height: 60px;
-  background-color: ${props => props.theme.background};
+  background-color: ${(props) => props.theme.background};
   > div {
     > img {
       height: 45px;
     }
   }
-`
+`;
 
 export const Profile = styled.div`
   display: block;
@@ -23,7 +23,7 @@ export const Profile = styled.div`
     display: inline-block;
 
     &:first-child {
-      border: 1px solid ${props => props.theme.textColor};
+      border: 1px solid ${(props) => props.theme.textColor};
       border-radius: 50%;
       width: fit-content;
       padding: 12px;
@@ -37,4 +37,4 @@ export const Profile = styled.div`
       height: 100%;
     }
   }
-`
+`;

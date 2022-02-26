@@ -1,14 +1,14 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const ToggleBall = styled.div`
   width: 20px;
   height: 20px;
-  /* background-color: ${props => props.theme.textColor}; */
+  /* background-color: ${(props) => props.theme.textColor}; */
   background-color: #fff;
   position: absolute;
   border-radius: 50%;
   transition: transform 0.2s linear;
-`
+`;
 
 export const ToggleButton = styled.div`
   margin: 2rem;
@@ -30,11 +30,11 @@ export const ToggleButton = styled.div`
   .label {
     width: 50px;
     height: 26px;
-    /* border: 1px solid ${props => props.theme.textColor}; */
-    /* background-color: ${props => props.theme.background}; */
+    /* border: 1px solid ${(props) => props.theme.textColor}; */
+    /* background-color: ${(props) => props.theme.background}; */
     background-color: #111;
     display: flex;
-    border-radius:50px;
+    border-radius: 50px;
     align-items: center;
     justify-content: space-between;
     padding: 5px;
@@ -43,7 +43,7 @@ export const ToggleButton = styled.div`
   }
 
   /*  target the elemenent after the label*/
-  .themeToggleInput:checked + .label ${ToggleBall}{
+  .themeToggleInput:checked + .label ${ToggleBall} {
     transform: translateX(24px);
   }
 
@@ -54,4 +54,4 @@ export const ToggleButton = styled.div`
   .fa-sun {
     color: yellow;
   }
-`
+`;
