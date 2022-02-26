@@ -29,7 +29,7 @@ const Cards = () => {
     return (
         <CardContainer>
             {props.Payload.map(bank => { 
-                return bank.data.map(account => {
+                return bank.data.map((account, idx) => {
                     var accountDetails = {
                         bankName: bank.fipID
                     }
@@ -40,7 +40,7 @@ const Cards = () => {
                     accountDetails.balance = account.decryptedFI.account?.transactions?.transaction.pop().currentBalance.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
                     cardCount++
                     return (
-                        <Card backgroundColor={COLORS[cardCount]}>
+                        <Card backgroundColor={COLORS[cardCount]} key={`${accountDetails.accountNumber.slice(8)} ${idx}`}>
                             <CardFlex1>
                                 <img 
                                     style={{ marginRight: "10px" }} 

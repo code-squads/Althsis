@@ -3,7 +3,13 @@ import styled from "styled-components"
 export const NavbarStyled = styled.div`
   width: 100%;
   height: 60px;
+  max-height: 60px;
   background-color: ${props => props.theme.background};
+  > div {
+    > img {
+      height: 45px;
+    }
+  }
 `
 
 export const Profile = styled.div`

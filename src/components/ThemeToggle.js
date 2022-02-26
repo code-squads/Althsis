@@ -15,7 +15,7 @@ const ThemeToggle = () => {
         onChange={e => setTheme(e.target.checked ? THEMES.DARK : THEMES.LIGHT)}
         className="themeToggleInput m-3" 
         id="themeToggleInput" />
-      <label for="themeToggleInput" className="label">
+      <label htmlFor="themeToggleInput" className="label">
         <i className="fas fa-moon"></i>
         <i className='fas fa-sun'></i>
         <ToggleBall></ToggleBall>

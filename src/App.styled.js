@@ -12,6 +12,7 @@ export const LeftContainer = styled.div`
     display: flex;
     flex-direction: column;
     background-color: #D3D3D3;
+    align-items: center;
 `
 export const RightContainer = styled.div`
     width: 43%;
