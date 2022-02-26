@@ -10,9 +10,10 @@ import {
   AccountHolderName,
 } from "./Cards.styled";
 import props from "../BankData.json";
-props.Payload.push(props.Payload[0]);
-props.Payload.push(props.Payload[1]);
-props.Payload.push(props.Payload[2]);
+
+// props.Payload.push(props.Payload[0]);
+// props.Payload.push(props.Payload[1]);
+// props.Payload.push(props.Payload[2]);
 const COLORS = [
   "rgba(66, 133, 244, 0.8)",
   "rgba(253, 162, 51, 0.8)",

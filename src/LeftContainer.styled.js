@@ -4,6 +4,7 @@ export const FlexContainer1 = styled.div`
   width: 100%;
   /* height: 42vh; */
   min-height: 300px;
+
   background-color: ${(props) => props.theme.background};
   display: flex;
   flex-direction: row;
