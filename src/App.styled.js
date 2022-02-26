@@ -22,5 +22,4 @@ export const RightContainer = styled.div`
     &::-webkit-scrollbar { 
         width: 0 !important;
     }
-    /* background-color: #e8e8e8; */
 `

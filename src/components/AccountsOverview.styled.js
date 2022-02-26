@@ -1,11 +1,5 @@
 import styled from "styled-components"
 
-export const Navbar = styled.div`
-  width: 100%;
-  height: 60px;
-  background-color: yellow;
-`
-
 export const BalanceChartCanvas = styled.canvas`
   max-width: 150px;
   margin: auto;

@@ -10,7 +10,12 @@ import { useContext } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
 import { THEME_VARIABLES } from '../constants/THEMES';
 
-ChartJS.register(ArcElement, BarController, BarElement, DoughnutController, Tooltip, Legend, PieController, CategoryScale, LinearScale);
+ChartJS.register(
+  Tooltip, Legend, 
+  ArcElement, BarElement,
+  BarController, DoughnutController, PieController, 
+  CategoryScale, LinearScale
+);
 
 const topXTransactions = (allTransactions, topX) => {
   const alreadyPresentIndex = {}
@@ -202,9 +207,7 @@ const AccountsOverview = () => {
             <br/>
             <div className='text-center'>
               Bank accounts: 
-              <ImpText>
-                5
-              </ImpText>
+              <ImpText> 5 </ImpText>
               <br/>
               Net balance: 
               <ImpText>

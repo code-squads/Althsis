@@ -23,7 +23,7 @@ export const Profile = styled.div`
     display: inline-block;
 
     &:first-child {
-      border: 1px solid black;
+      border: 1px solid ${props => props.theme.textColor};
       border-radius: 50%;
       width: fit-content;
       padding: 12px;
