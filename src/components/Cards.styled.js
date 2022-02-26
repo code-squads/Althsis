@@ -5,7 +5,7 @@ export const CardContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 44%);
     grid-auto-rows: 160px;
-    grid-gap: 4%;
+    grid-gap: 23px;
     justify-content: center;
     overflow-y: scroll;
     overflow-y: -moz-scrollbars-none;
