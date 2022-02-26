@@ -5,31 +5,6 @@ export const Navbar = styled.div`
   height: 60px;
   background-color: yellow;
 `
-export const Profile = styled.div`
-  display: block;
-  align-items: center;
-  width: 100%;
-  height: fit-content;
-
-  > div {
-    display: inline-block;
-
-    &:first-child {
-      border: 1px solid black;
-      border-radius: 50%;
-      width: fit-content;
-      padding: 15px;
-      float: left;
-    }
-    &.profileName {
-      margin: 15px;
-      margin-top: 2px;
-      margin-bottom: 2px;
-      font-size: 30px;
-      height: 100%;
-    }
-  }
-`
 
 export const BalanceChartCanvas = styled.canvas`
   max-width: 150px;

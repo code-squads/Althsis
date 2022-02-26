@@ -20,14 +20,14 @@ export const Profile = styled.div`
       border: 1px solid black;
       border-radius: 50%;
       width: fit-content;
-      padding: 15px;
+      padding: 12px;
       float: left;
     }
     &.profileName {
       margin: 15px;
       margin-top: 2px;
       margin-bottom: 2px;
-      font-size: 30px;
+      font-size: 25px;
       height: 100%;
     }
   }

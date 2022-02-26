@@ -9,7 +9,7 @@ import { data } from '../constants/dummyData'
 const Navbar = () => {
   return (
     <NavbarStyled>
-      <div className='float-end m-2 mx-3 d-flex align-items-center justify-content-center'>
+      <div className='float-end m-1 mx-3 d-flex align-items-center justify-content-center'>
         <ThemeToggle />
         <Profile>
           <div>
