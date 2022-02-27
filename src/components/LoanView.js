@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import props from "../BankData.json";
-
 import { avgMonBalance } from "../utils/avgMonBal";
 
 import {
@@ -12,13 +11,20 @@ import {
 } from "./loanView.styled";
 
 const LoanView = () => {
-  console.log(props);
   const [duration, setDuration] = useState("12");
   const [loanAmount, setLoanAmount] = useState("");
+  const [avgBalance, setAvgBalance] = useState(0);
+
+  useEffect(() => {
+    setAvgBalance(avgMonBalance(props));
+    return () => {
+    }
+  }, []);
+  
 
   const handleDurationChange = (e) => {
     setDuration(e.target.value);
-    setLoanAmount((e.target.value * avgMonBalance(props) * 70) / 100);
+    setLoanAmount((e.target.value * avgBalance * 70) / 100);
   };
 
   return (
@@ -28,7 +34,7 @@ const LoanView = () => {
         <LoanDisplayCard>
           <LoanHeading>Permissible Loan</LoanHeading>
           <LoanSubHeading>Based on your previous months savings</LoanSubHeading>
-          Your Monthly Average Balance : {avgMonBalance(props)}
+          Your Monthly Average Balance : {avgBalance}
           <br />
           Loan Duration : {duration} months
           <SlideDiv>

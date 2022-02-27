@@ -76,7 +76,6 @@ const length = (data) => {
 
 export const avgMonBalance = (props) => {
   let average;
-
   // Array to store bank wise averages
   let perBankAverages = [];
 
@@ -105,6 +104,9 @@ export const avgMonBalance = (props) => {
       perBankAverages.push(averageMonthlyBal);
     }
   }
+
+  // console.log(props);
+  // console.log(objectHash(props));
   average = sumAverages(perBankAverages);
 
   // returning the final average per month of all bank accounts

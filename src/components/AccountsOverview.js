@@ -84,7 +84,7 @@ const AccountsOverview = () => {
     for (const tx of fullData.Payload[0].data) {
       allTransactions.push(...tx.decryptedFI.account.transactions.transaction);
     }
-    console.log(allTransactions);
+    // console.log(allTransactions);
     window.allTransactions = allTransactions;
     const top5UPIs = topXTransactions(allTransactions, 5);
     console.log("Top 5 UPIs :", top5UPIs);
@@ -139,7 +139,7 @@ const AccountsOverview = () => {
           ...tx.decryptedFI.account.transactions.transaction
         );
       }
-      console.log(allTransactions);
+      // console.log(allTransactions);
       window.allTransactions = allTransactions;
       const top5UPIs = topXTransactions(allTransactions, 5);
       console.log("Top 5 UPIs :", top5UPIs);
