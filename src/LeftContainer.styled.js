@@ -19,5 +19,5 @@ export const FlexContainer2 = styled.div`
   background-color: ${(props) => props.theme.background};
   display: flex;
   flex-direction: row;
-  border-top: 2px solid ${(props) => props.theme.textColor};
+  // border-top: 2px solid ${(props) => props.theme.textColor};
 `;

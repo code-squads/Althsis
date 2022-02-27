@@ -74,6 +74,8 @@ const length = (data) => {
   return Object.keys(data).length;
 };
 
+const ArrayofBanks = [];
+
 export const avgMonBalance = (props) => {
   let average;
   // Array to store bank wise averages
@@ -96,6 +98,9 @@ export const avgMonBalance = (props) => {
 
       // Monthly Balances of Transactionarray
       const perMonthsBal = monthlyBalCalculator(transactionsPerBank);
+      // console.log(perMonthsBal);
+      console.log(`Pushing : ${perMonthsBal}`);
+      ArrayofBanks.push(perMonthsBal);
 
       // Calculating Average of those Monthly Balances
       const averageMonthlyBal = monthlyBalAverage(perMonthsBal);
@@ -104,13 +109,28 @@ export const avgMonBalance = (props) => {
       perBankAverages.push(averageMonthlyBal);
     }
   }
-
+  // console.log(perBankAverages);
   // console.log(props);
   // console.log(objectHash(props));
   average = sumAverages(perBankAverages);
 
+  // ///////////////////////////////
+  // For Savings Chart
+  const [first, second, third] = ArrayofBanks.slice(0, 3);
+  const SavingsArray = first.map((e, index) => {
+    return e + second[index] + third[index];
+  });
+  console.log(`Savings : ${SavingsArray}`);
+
+  const newArr = [];
+  for (let i = 0; i < SavingsArray.length; i += 2) {
+    newArr.push(SavingsArray[i] + SavingsArray[i + 1]);
+  }
+
+  // //////////////////////////////
+
   // returning the final average per month of all bank accounts
-  return average;
+  return [average, newArr];
 };
 
 export const getWords = (monthCount) => {
@@ -131,4 +151,26 @@ export const getWords = (monthCount) => {
 
 export const numberWithCommas = (num) => {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
+export const nFormatter = (num) => {
+  const lookup = [
+    { value: 1, symbol: "" },
+    { value: 1e3, symbol: "k" },
+    { value: 1e6, symbol: "M" },
+    { value: 1e9, symbol: "G" },
+    { value: 1e12, symbol: "T" },
+    { value: 1e15, symbol: "P" },
+    { value: 1e18, symbol: "E" },
+  ];
+  const rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
+  var item = lookup
+    .slice()
+    .reverse()
+    .find(function (item) {
+      return num >= item.value;
+    });
+  return item
+    ? (num / item.value).toFixed(1).replace(rx, "$1") + item.symbol
+    : "0";
 };
