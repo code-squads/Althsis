@@ -10,6 +10,7 @@ import { ThemeContext } from 'styled-components'
 
 import { FlexContainer1, FlexContainer2 } from '../LeftContainer.styled'
 import { MainContainer, LeftContainer, RightContainer } from '../App.styled'
+import SucessModal from '../components/SucessModal'
 
 const Dashboard = () => {
   const theme = useContext(ThemeContext);
@@ -17,6 +18,7 @@ const Dashboard = () => {
 
   return (
     <>
+      {/* <SucessModal/> */}
       <Navbar />
       <MainContainer>
         <LeftContainer>
