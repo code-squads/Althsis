@@ -64,7 +64,13 @@ const SuccessModal = (props) => {
         />
         <Success>Success</Success>
         <ConsentStatus>consent status : ACTIVE</ConsentStatus>
-        <GoToDashboardButton onClick={() => {props.setShowSuccessModal(false)}} >Go to Dashboard</GoToDashboardButton>
+        <GoToDashboardButton
+          onClick={() => {
+            props.setShowSuccessModal(false);
+          }}
+        >
+          Go to Dashboard
+        </GoToDashboardButton>
       </Container>
     </Backdrop>
   );

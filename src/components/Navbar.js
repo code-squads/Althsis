@@ -11,10 +11,7 @@ const Navbar = () => {
     <NavbarStyled>
       <div className="d-flex float-start justify-content-center align-items-center m-2 mx-5">
         <img src={AlthsisIcon} alt="Althsis" />
-        <h3
-          className="mx-3 pt-1"
-          style={{ fontFamily: "Inter" }}
-        >
+        <h3 className="mx-3 pt-1" style={{ fontFamily: "Inter" }}>
           Althsis
         </h3>
       </div>

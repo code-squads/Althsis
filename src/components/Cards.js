@@ -25,68 +25,70 @@ const COLORS = [
 ];
 
 const Cards = (props) => {
-  console.log(props)
-  console.log(props.bankData)
+  console.log(props);
+  console.log(props.bankData);
 
   let cardCount = -1;
   return (
     <CardContainer>
-      {props.bankData.Payload && props?.bankData?.Payload.map((bank) => {
-        return bank.data.map((account, idx) => {
-          cardCount++;
-          account.bankName = bank.fipID;
-          account.accountNumber = account.maskedAccNumber;
-          account.accountHolderName =
-            account.decryptedFI.account?.profile?.holders?.holder[0]?.name;
-          account.accountHolderFirstName =
-            account.decryptedFI.account?.profile?.holders?.holder[0]?.name?.split(
-              " "
-            )[0];
-          account.accountHolderLastName =
-            account.decryptedFI.account?.profile?.holders?.holder[0]?.name?.split(
-              " "
-            )[2];
-          account.balance =
-            account.decryptedFI.account?.transactions?.transaction[
-              account.decryptedFI.account?.transactions?.transaction?.length - 1
-            ]?.currentBalance?.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-          account.backgroundColor = COLORS[cardCount];
-          return (
-            <Card
-              backgroundColor={COLORS[cardCount]}
-              key={`${account.accountNumber.slice(8)} ${idx}`}
-              onClick={() => {
-                props.setShowDetailedAccount(account);
-              }}
-            >
-              <CardFlex1>
-                <img
-                  style={{ marginRight: "10px" }}
-                  src="./chip.svg"
-                  alt="chip"
-                ></img>
-                {account.bankName.toUpperCase()}
-              </CardFlex1>
-              <CardFlex2>
-                **** **** **** {account.accountNumber.slice(8)}
-              </CardFlex2>
-              <CardFlex3>AccountHolder Name</CardFlex3>
-              <CardFlex4>
-                <AccountHolderName>
-                  {account.accountHolderFirstName
-                    ? account.accountHolderFirstName
-                    : "RUPESH"}{" "}
-                  &nbsp;
-                  {account.accountHolderLastName
-                    ? account.accountHolderLastName
-                    : "RAUT"}
-                </AccountHolderName>
-                <Balance>₹ {account.balance}</Balance>
-              </CardFlex4>
-            </Card>
-          );
-        });
-      })}
+      {props.bankData.Payload &&
+        props?.bankData?.Payload.map((bank) => {
+          return bank.data.map((account, idx) => {
+            cardCount++;
+            account.bankName = bank.fipID;
+            account.accountNumber = account.maskedAccNumber;
+            account.accountHolderName =
+              account.decryptedFI.account?.profile?.holders?.holder[0]?.name;
+            account.accountHolderFirstName =
+              account.decryptedFI.account?.profile?.holders?.holder[0]?.name?.split(
+                " "
+              )[0];
+            account.accountHolderLastName =
+              account.decryptedFI.account?.profile?.holders?.holder[0]?.name?.split(
+                " "
+              )[2];
+            account.balance =
+              account.decryptedFI.account?.transactions?.transaction[
+                account.decryptedFI.account?.transactions?.transaction?.length -
+                  1
+              ]?.currentBalance?.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            account.backgroundColor = COLORS[cardCount];
+            return (
+              <Card
+                backgroundColor={COLORS[cardCount]}
+                key={`${account.accountNumber.slice(8)} ${idx}`}
+                onClick={() => {
+                  props.setShowDetailedAccount(account);
+                }}
+              >
+                <CardFlex1>
+                  <img
+                    style={{ marginRight: "10px" }}
+                    src="./chip.svg"
+                    alt="chip"
+                  ></img>
+                  {account.bankName.toUpperCase()}
+                </CardFlex1>
+                <CardFlex2>
+                  **** **** **** {account.accountNumber.slice(8)}
+                </CardFlex2>
+                <CardFlex3>AccountHolder Name</CardFlex3>
+                <CardFlex4>
+                  <AccountHolderName>
+                    {account.accountHolderFirstName
+                      ? account.accountHolderFirstName
+                      : "RUPESH"}{" "}
+                    &nbsp;
+                    {account.accountHolderLastName
+                      ? account.accountHolderLastName
+                      : "RAUT"}
+                  </AccountHolderName>
+                  <Balance>₹ {account.balance}</Balance>
+                </CardFlex4>
+              </Card>
+            );
+          });
+        })}
     </CardContainer>
   );
 };

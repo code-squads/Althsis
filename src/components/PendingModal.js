@@ -56,7 +56,7 @@ const GoToDashboardButton = styled.button`
 `;
 
 const PendingModal = () => {
-  const history = useHistory()
+  const history = useHistory();
 
   return (
     <Backdrop>
@@ -67,7 +67,13 @@ const PendingModal = () => {
         />
         <Success>Pending</Success>
         <ConsentStatus>consent status : PENDING</ConsentStatus>
-        <GoToDashboardButton onClick={() => {window.open(localStorage.getItem('url'), '_self')}}>Go to consent form</GoToDashboardButton>
+        <GoToDashboardButton
+          onClick={() => {
+            window.open(localStorage.getItem("url"), "_self");
+          }}
+        >
+          Go to consent form
+        </GoToDashboardButton>
       </Container>
     </Backdrop>
   );

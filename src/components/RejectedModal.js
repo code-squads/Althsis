@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 const Backdrop = styled.div`
@@ -56,7 +56,7 @@ const GoToDashboardButton = styled.button`
 `;
 
 const RejectedModal = () => {
-  const history = useHistory()
+  const history = useHistory();
 
   return (
     <Backdrop>
@@ -67,11 +67,15 @@ const RejectedModal = () => {
         />
         <Success>Rejected</Success>
         <ConsentStatus>consent status : REJECTED</ConsentStatus>
-        <GoToDashboardButton onClick={() => {
-          history.push("/login")
-          localStorage.setItem('consentId', null)
-          localStorage.setItem('url', null)  
-        }}>Go to Login</GoToDashboardButton>
+        <GoToDashboardButton
+          onClick={() => {
+            history.push("/login");
+            localStorage.setItem("consentId", null);
+            localStorage.setItem("url", null);
+          }}
+        >
+          Go to Login
+        </GoToDashboardButton>
       </Container>
     </Backdrop>
   );
