@@ -1,5 +1,5 @@
 <div align="center">
-  <img scr="https://user-images.githubusercontent.com/58624108/155894757-48284050-36bc-49ee-8f21-5121fbd76300.png">
+  <img scr="https://github.com/code-squads/Althsis/blob/master/src/assets/icons/analysis.png">
   <h1> Althsis </h1>
   <h3> Get your finances analyzed with Althsis </h3>
   Built with ❤️ for Fintech Open Month
