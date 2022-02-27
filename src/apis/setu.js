@@ -3,12 +3,13 @@ import { SERVER } from "../constants/urls";
 
 export const createConsent = (phone) => {
   return new Promise((resolve, reject) => {
-      axios.post(`${SERVER}/api/createConsent/${phone}`)
-      .then(res => {
+    axios
+      .post(`${SERVER}/api/createConsent/${phone}`)
+      .then((res) => {
         console.log(res.data);
         resolve(res);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
         reject(err);
       });
@@ -17,12 +18,13 @@ export const createConsent = (phone) => {
 
 export const getConsent = (consentID) => {
   return new Promise((resolve, reject) => {
-      axios.get(`${SERVER}/api/getConsent/${consentID}`)
-      .then(res => {
+    axios
+      .get(`${SERVER}/api/getConsent/${consentID}`)
+      .then((res) => {
         console.log(res.data);
         resolve(res);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
         reject(err);
       });
@@ -31,12 +33,13 @@ export const getConsent = (consentID) => {
 
 export const createDataSession = (consentID) => {
   return new Promise((resolve, reject) => {
-      axios.post(`${SERVER}/api/createDataSession/${consentID}`)
-      .then(res => {
+    axios
+      .post(`${SERVER}/api/createDataSession/${consentID}`)
+      .then((res) => {
         console.log(res.data);
         resolve(res);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
         reject(err);
       });
@@ -45,12 +48,13 @@ export const createDataSession = (consentID) => {
 
 export const getData = (dataSessionID) => {
   return new Promise((resolve, reject) => {
-      axios.get(`${SERVER}/api/getData/${dataSessionID}`)
-      .then(res => {
+    axios
+      .get(`${SERVER}/api/getData/${dataSessionID}`)
+      .then((res) => {
         console.log(res.data);
         resolve(res);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
         reject(err);
       });
