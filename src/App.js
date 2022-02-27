@@ -14,7 +14,6 @@ import DetailedAccount from "./components/DetailedAccount";
 const App = () => {
   const theme = useContext(ThemeContext);
   const [showDetailedAccount, setShowDetailedAccount] = useState(false)
-  console.log(showDetailedAccount)
 
   return (
     <div className="App">

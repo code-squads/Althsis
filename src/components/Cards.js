@@ -30,32 +30,19 @@ const Cards = (props) => {
     <CardContainer>
       {mockData.Payload.map((bank) => {
         return bank.data.map((account, idx) => {
-          var accountDetails = {
-            bankName: bank.fipID,
-          };
-          accountDetails.accountNumber = account.maskedAccNumber;
-          accountDetails.accountHolderName =
-            account.decryptedFI.account?.profile?.holders?.holder[0]?.name;
-          accountDetails.accountHolderFirstName =
-            account.decryptedFI.account?.profile?.holders?.holder[0]?.name?.split(
-              " "
-            )[0];
-          accountDetails.accountHolderLastName =
-            account.decryptedFI.account?.profile?.holders?.holder[0]?.name?.split(
-              " "
-            )[2];
-          accountDetails.balance =
-            account.decryptedFI.account?.transactions?.transaction
-              .pop()
-              .currentBalance.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           cardCount++;
+          account.bankName = bank.fipID
+          account.accountNumber = account.maskedAccNumber;
+          account.accountHolderName = account.decryptedFI.account?.profile?.holders?.holder[0]?.name;
+          account.accountHolderFirstName = account.decryptedFI.account?.profile?.holders?.holder[0]?.name?.split(" ")[0];
+          account.accountHolderLastName = account.decryptedFI.account?.profile?.holders?.holder[0]?.name?.split(" ")[2];
+          account.balance = account.decryptedFI.account?.transactions?.transaction[account.decryptedFI.account?.transactions?.transaction?.length - 1]?.currentBalance?.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          account.backgroundColor = COLORS[cardCount]
           return (
             <Card
               backgroundColor={COLORS[cardCount]}
-              key={`${accountDetails.accountNumber.slice(8)} ${idx}`}
+              key={`${account.accountNumber.slice(8)} ${idx}`}
               onClick={() => {
-                account.bankName = bank.fipID
-                account.backgroundColor = cardCount
                 props.setShowDetailedAccount(account)
               }}
             >
@@ -65,23 +52,23 @@ const Cards = (props) => {
                   src="./chip.svg"
                   alt="chip"
                 ></img>
-                {accountDetails.bankName.toUpperCase()}
+                {account.bankName.toUpperCase()}
               </CardFlex1>
               <CardFlex2>
-                **** **** **** {accountDetails.accountNumber.slice(8)}
+                **** **** **** {account.accountNumber.slice(8)}
               </CardFlex2>
               <CardFlex3>AccountHolder Name</CardFlex3>
               <CardFlex4>
                 <AccountHolderName>
-                  {accountDetails.accountHolderFirstName
-                    ? accountDetails.accountHolderFirstName
+                  {account.accountHolderFirstName
+                    ? account.accountHolderFirstName
                     : "RUPESH"}{" "}
                   &nbsp;
-                  {accountDetails.accountHolderLastName
-                    ? accountDetails.accountHolderLastName
+                  {account.accountHolderLastName
+                    ? account.accountHolderLastName
                     : "RAUT"}
                 </AccountHolderName>
-                <Balance>₹ {accountDetails.balance}</Balance>
+                <Balance>₹ {account.balance}</Balance>
               </CardFlex4>
             </Card>
           );
