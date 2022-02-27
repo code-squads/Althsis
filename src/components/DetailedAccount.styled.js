@@ -68,71 +68,73 @@ export const TransactionsContainer = styled.div`
   margin-bottom: 90px;
   row-gap: 16px;
   overflow-y: auto;
-  ::-webkit-scrollbar{
-      display: none;
+  ::-webkit-scrollbar {
+    display: none;
   }
 `;
 export const TransactionFlex = styled.div`
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
   width: 100%;
   min-height: 38px;
-  min-height: ${props => props.open? 144: 38}px;
-  max-height: ${props => props.open? 0: 38}px;
+  min-height: ${(props) => (props.open ? 144 : 38)}px;
+  max-height: ${(props) => (props.open ? 0 : 38)}px;
   border-radius: 24px;
-  border: ${props => props.open? "1px dashed #c4c4c4": "solid #c4c4c4 1px"};
+  border: ${(props) =>
+    props.open ? "1px dashed #c4c4c4" : "solid #c4c4c4 1px"};
   -webkit-transition: min-height 400ms ease-in-out;
-    -moz-transition: min-height 400ms ease-in-out;
-    -o-transition: min-height 400ms ease-in-out;
-    transition: min-height 400ms ease-in-out;
-    cursor: pointer;
-    overflow: hidden;
+  -moz-transition: min-height 400ms ease-in-out;
+  -o-transition: min-height 400ms ease-in-out;
+  transition: min-height 400ms ease-in-out;
+  cursor: pointer;
+  overflow: hidden;
 `;
 export const TypeOfTransaction = styled.div`
-    width: 28px;
-    height: 100%;
-    background-color: ${props => props.type === "CREDIT"?'#C3FC23':'#EA665E'};
-    border-top-left-radius: 24px;
-    border-bottom-left-radius: 24px;
-`
+  width: 28px;
+  height: 100%;
+  background-color: ${(props) =>
+    props.type === "CREDIT" ? "#C3FC23" : "#EA665E"};
+  border-top-left-radius: 24px;
+  border-bottom-left-radius: 24px;
+`;
 export const TransactionSubFlex1 = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    min-height: 38px;
-    width: 100%;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
-    letter-spacing: -0.5px;
-    color: #404040;
-`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 38px;
+  width: 100%;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: -0.5px;
+  color: #404040;
+`;
 export const TransactionTime = styled.div`
-    margin-left: 22px;
-`
+  margin-left: 22px;
+`;
 export const TransactionValue = styled.div`
-    margin-left: auto;
-    margin-right: 34px;
-`
+  margin-left: auto;
+  margin-right: 34px;
+`;
 export const TransactionDetailsContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-top: 5px;
-    row-gap: 3px;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 15px;
-    letter-spacing: -0.5px;
-    color: #505050;
-    margin-left: 22px;
-    padding-right: 10px;
-`
-export const Reference = styled.div``
-export const TxnId = styled.div``
-export const Naration = styled.div``
-export const Type = styled.div``
-export const CurrentBalance = styled.div``
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  row-gap: 3px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.5px;
+  color: #505050;
+  margin-left: 22px;
+  padding-right: 10px;
+`;
+export const Reference = styled.div``;
+export const TxnId = styled.div``;
+export const Naration = styled.div``;
+export const Type = styled.div``;
+export const CurrentBalance = styled.div``;

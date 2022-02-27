@@ -32,14 +32,22 @@ import {
 import { useState } from "react";
 
 const DetailedAccount = (props) => {
-    const [openTransaction, setOpenTransaction] = useState(false)
+  const [openTransaction, setOpenTransaction] = useState(false);
   const account = props.account;
 
-  const Last20Transactions = [] 
-  for(let i = 1; i<= 20; i++) {
-      if(account.decryptedFI.account.transactions.transaction[account.decryptedFI.account.transactions.transaction.length - i])
-        Last20Transactions.push(account.decryptedFI.account.transactions.transaction[account.decryptedFI.account.transactions.transaction.length - i])
-    }
+  const Last20Transactions = [];
+  for (let i = 1; i <= 20; i++) {
+    if (
+      account.decryptedFI.account.transactions.transaction[
+        account.decryptedFI.account.transactions.transaction.length - i
+      ]
+    )
+      Last20Transactions.push(
+        account.decryptedFI.account.transactions.transaction[
+          account.decryptedFI.account.transactions.transaction.length - i
+        ]
+      );
+  }
 
   return (
     <Container>
@@ -95,33 +103,61 @@ const DetailedAccount = (props) => {
         </Flexbox2>
       </Card>
       <TransactionsContainer>
-              {Last20Transactions.map(data => {
-                  return (
-                    <TransactionFlex open={data === openTransaction} onClick={() => {
-                        if(openTransaction === data) {
-                            setOpenTransaction(null)
-                        }
-                        else {
-                            setOpenTransaction(data)
-                        }
-                    }}>
-                        <TypeOfTransaction type={data?.type}/>
-                        <div style={{display: 'flex', flexDirection: 'column', width: '100%'}}>
-                            <TransactionSubFlex1>
-                                <TransactionTime>{data?.transactionTimestamp}</TransactionTime>
-                                <TransactionValue>₹ {data?.currentBalance}</TransactionValue>
-                            </TransactionSubFlex1>
-                            <TransactionDetailsContainer>
-                                <Reference>reference &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {data?.reference}</Reference>
-                                <TxnId>txnId &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {data?.txnId}</TxnId>
-                                <Naration>naration &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {data?.narration}</Naration>
-                                <Type>type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {data?.type}</Type>
-                                <CurrentBalance>currentBalance &nbsp;: ₹ 14,293.00</CurrentBalance>
-                            </TransactionDetailsContainer>
-                        </div>
-                    </TransactionFlex>
-                  )
-              })}
+        {Last20Transactions.map((data) => {
+          return (
+            <TransactionFlex
+              open={data === openTransaction}
+              onClick={() => {
+                if (openTransaction === data) {
+                  setOpenTransaction(null);
+                } else {
+                  setOpenTransaction(data);
+                }
+              }}
+            >
+              <TypeOfTransaction type={data?.type} />
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "100%",
+                }}
+              >
+                <TransactionSubFlex1>
+                  <TransactionTime>
+                    {data?.transactionTimestamp}
+                  </TransactionTime>
+                  <TransactionValue>₹ {data?.currentBalance}</TransactionValue>
+                </TransactionSubFlex1>
+                <TransactionDetailsContainer>
+                  <Reference>
+                    reference
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:{" "}
+                    {data?.reference}
+                  </Reference>
+                  <TxnId>
+                    txnId
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:{" "}
+                    {data?.txnId}
+                  </TxnId>
+                  <Naration>
+                    naration
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:{" "}
+                    {data?.narration}
+                  </Naration>
+                  <Type>
+                    type
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:{" "}
+                    {data?.type}
+                  </Type>
+                  <CurrentBalance>
+                    currentBalance &nbsp;: ₹ 14,293.00
+                  </CurrentBalance>
+                </TransactionDetailsContainer>
+              </div>
+            </TransactionFlex>
+          );
+        })}
       </TransactionsContainer>
     </Container>
   );
