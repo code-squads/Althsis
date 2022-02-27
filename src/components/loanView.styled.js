@@ -5,16 +5,35 @@ export const Loan = styled.div`
   padding-right: 20px;
 `;
 
-export const ChartDiv = styled.canvas`
-  // min-height: 300px;
-  max-width: 250px;
-  margin: auto;
+export const ChartHeading = styled.div`
+  margin-top: 10px;
+  font-size: 1.5rem;
+  font-weight: 450;
+  padding-left: 10px;
+`;
+
+export const Chartbox = styled.div`
+  margin-top: 20px;
+  min-height: 200px;
+  padding-left: 20px;
+  padding-right: 20px;
+`;
+
+export const LoanChart = styled.div`
+  min-width: 280px;
+  min-height: 300px;
+  margin-top: 20px;
+  background-color: "#15ffd4";
+  font-family: Inter;
+  border-style: solid;
+  border-color: #e8e8e8;
+  border-radius: 4px;
 `;
 
 export const LoanDisplayCard = styled.div`
-  min-width: 500px;
+  min-width: 480px;
   min-height: 300px;
-  margin-left: 70px;
+  margin-left: 50px;
   margin-top: 20px;
   background-color: "#15ffd4";
   color: ${(props) => (props.theme.isDark ? "#ffffff" : "#404040")};
