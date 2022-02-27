@@ -17,10 +17,8 @@ const LoanView = () => {
 
   useEffect(() => {
     setAvgBalance(avgMonBalance(props));
-    return () => {
-    }
+    return () => {};
   }, []);
-  
 
   const handleDurationChange = (e) => {
     setDuration(e.target.value);

@@ -64,9 +64,7 @@ const Cards = (props) => {
                 ></img>
                 {account.bankName.toUpperCase()}
               </CardFlex1>
-              <CardFlex2>
-                ** ** ** {account.accountNumber.slice(8)}
-              </CardFlex2>
+              <CardFlex2>** ** ** {account.accountNumber.slice(8)}</CardFlex2>
               <CardFlex3>AccountHolder Name</CardFlex3>
               <CardFlex4>
                 <AccountHolderName>
