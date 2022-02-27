@@ -1,45 +1,37 @@
 import React, { useContext, useState } from "react";
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 
-import { LeftContainer, MainContainer, RightContainer } from "./App.styled";
-import AccountsOverview from "./components/AccountsOverview";
 import Navbar from "./components/Navbar";
-import Cards from "./components/Cards.js";
-import { FlexContainer1, FlexContainer2 } from "./LeftContainer.styled";
-import { ThemeContext, ThemeProvider } from "./context/ThemeContext";
-import LoanView from "./components/LoanView";
+import { AuthProvider } from './context/authorisation';
+import { ThemeProvider } from "./context/ThemeContext";
+
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+
 import "./colors.css";
 import "./App.css";
-import DetailedAccount from "./components/DetailedAccount";
 
 const App = () => {
-  const theme = useContext(ThemeContext);
-  const [showDetailedAccount, setShowDetailedAccount] = useState(false);
 
   return (
     <div className="App">
       <ThemeProvider>
-        <Navbar />
-        <MainContainer>
-          <LeftContainer>
-            <FlexContainer1>
-              <AccountsOverview />
-            </FlexContainer1>
-            <FlexContainer2>
-              <LoanView></LoanView>
-            </FlexContainer2>
-          </LeftContainer>
-          <RightContainer>
-            {!showDetailedAccount && (
-              <Cards setShowDetailedAccount={setShowDetailedAccount} />
-            )}
-            {showDetailedAccount && (
-              <DetailedAccount
-                account={showDetailedAccount}
-                setShowDetailedAccount={setShowDetailedAccount}
-              />
-            )}
-          </RightContainer>
-        </MainContainer>
+        <AuthProvider>
+          <BrowserRouter>
+            <Navbar />
+              <Switch>
+                <Route exact path="/" component={Dashboard} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path='/dash' component={Dashboard} />
+                <Redirect to="/" />
+              </Switch>
+          </BrowserRouter>
+        </AuthProvider>
       </ThemeProvider>
     </div>
   );
