@@ -90,15 +90,22 @@ const AccountsOverview = () => {
     console.log("Top 5 UPIs :", top5UPIs);
     setTopTransactionsData(top5UPIs);
     window.banks = bankData.Payload;
-    const allBalances = []
+    const allBalances = [];
     console.log(bankData.Payload[0].data[0]);
-    bankData.Payload.forEach(bank => {
-      bank.data.forEach(account => allBalances.push({
-        acc: ` ${account.maskedAccNumber.slice(6)}`,
-        balance: Number(Number(account.decryptedFI.account?.transactions?.transaction[
-          account.decryptedFI.account?.transactions?.transaction?.length - 1
-        ]?.currentBalance).toFixed(0))
-      }));
+    bankData.Payload.forEach((bank) => {
+      bank.data.forEach((account) =>
+        allBalances.push({
+          acc: ` ${account.maskedAccNumber.slice(6)}`,
+          balance: Number(
+            Number(
+              account.decryptedFI.account?.transactions?.transaction[
+                account.decryptedFI.account?.transactions?.transaction?.length -
+                  1
+              ]?.currentBalance
+            ).toFixed(0)
+          ),
+        })
+      );
     });
     setBalances(allBalances);
   }, []);
@@ -106,20 +113,23 @@ const AccountsOverview = () => {
   useEffect(() => {
     if (!balances) return;
 
-    const totalBalance = balances.reduce((prevBal, currAcc) => prevBal +currAcc.balance, 0);
+    const totalBalance = balances.reduce(
+      (prevBal, currAcc) => prevBal + currAcc.balance,
+      0
+    );
     if (balanceChartDOM.current) {
       if (balanceChartObj) balanceChartObj?.destroy();
       const newBalanceChartObj = new ChartJS(balanceChartDOM.current, {
         type: "pie",
         data: {
-          labels: balances.map(acc => acc.acc),
+          labels: balances.map((acc) => acc.acc),
           datasets: [
             {
               label: "Balance (₹): ",
               backgroundColor: ACC_COLORS,
-              data: balances.map(acc => acc.balance),
+              data: balances.map((acc) => acc.balance),
             },
-          ]
+          ],
         },
         plugins: [ChartDataLabels],
         options: {
@@ -254,13 +264,16 @@ const AccountsOverview = () => {
               <br />
               Net balance:
               <ImpText>
-                ₹ 
-                { 
-                  balances ? 
-                  Number(balances.reduce((prevBal, currAcc) => prevBal + currAcc.balance, 0))
-                  : 0
-                }
-                </ImpText>
+                ₹
+                {balances
+                  ? Number(
+                      balances.reduce(
+                        (prevBal, currAcc) => prevBal + currAcc.balance,
+                        0
+                      )
+                    )
+                  : 0}
+              </ImpText>
             </div>
           </div>
           <FrequentTxContainer>
