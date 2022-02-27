@@ -25,10 +25,13 @@ const COLORS = [
 ];
 
 const Cards = (props) => {
+  console.log(props)
+  console.log(props.bankData)
+
   let cardCount = -1;
   return (
     <CardContainer>
-      {mockData.Payload.map((bank) => {
+      {props.bankData.Payload && props?.bankData?.Payload.map((bank) => {
         return bank.data.map((account, idx) => {
           cardCount++;
           account.bankName = bank.fipID;

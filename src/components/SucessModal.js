@@ -54,7 +54,7 @@ const GoToDashboardButton = styled.button`
   border-radius: 10px;
 `;
 
-const SuccessModal = () => {
+const SuccessModal = (props) => {
   return (
     <Backdrop>
       <Container>
@@ -64,7 +64,7 @@ const SuccessModal = () => {
         />
         <Success>Success</Success>
         <ConsentStatus>consent status : ACTIVE</ConsentStatus>
-        <GoToDashboardButton>Go to Dashboard</GoToDashboardButton>
+        <GoToDashboardButton onClick={() => {props.setShowSuccessModal(false)}} >Go to Dashboard</GoToDashboardButton>
       </Container>
     </Backdrop>
   );

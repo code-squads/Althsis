@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 const Backdrop = styled.div`
@@ -55,6 +56,8 @@ const GoToDashboardButton = styled.button`
 `;
 
 const PendingModal = () => {
+  const history = useHistory()
+
   return (
     <Backdrop>
       <Container>
@@ -64,7 +67,7 @@ const PendingModal = () => {
         />
         <Success>Pending</Success>
         <ConsentStatus>consent status : PENDING</ConsentStatus>
-        <GoToDashboardButton>Go to consent form</GoToDashboardButton>
+        <GoToDashboardButton onClick={() => {window.open(localStorage.getItem('url'), '_self')}}>Go to consent form</GoToDashboardButton>
       </Container>
     </Backdrop>
   );

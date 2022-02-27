@@ -13,7 +13,7 @@ const Navbar = () => {
         <img src={AlthsisIcon} alt="Althsis" />
         <h3
           className="mx-3 pt-1"
-          style={{ color: "#404040", fontFamily: "Inter" }}
+          style={{ fontFamily: "Inter" }}
         >
           Althsis
         </h3>
