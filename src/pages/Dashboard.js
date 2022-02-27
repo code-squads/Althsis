@@ -5,7 +5,6 @@ import LoanView from "../components/LoanView";
 import Cards from "../components/Cards";
 import DetailedAccount from "../components/DetailedAccount";
 import Navbar from "../components/Navbar";
-
 import { ThemeContext } from "styled-components";
 
 import { FlexContainer1, FlexContainer2 } from "../LeftContainer.styled";

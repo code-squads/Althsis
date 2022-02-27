@@ -1,67 +1,63 @@
 import axios from "axios";
-import { CLIENT_ID, CLIENT_SECRET } from "../constants/authID";
+import { SERVER } from "../constants/urls";
 
-export const createSession = (phone, fromDate = "", toDate = "") => {
+export const createConsent = (phone) => {
   return new Promise((resolve, reject) => {
-    axios
-      .post(
-        "https://fiu-uat.setu.co/consents",
-        {
-          Detail: {
-            consentStart: "{{$isoTimestamp}}",
-            consentExpiry: "2022-04-23T05:44:53.822Z",
-            Customer: {
-              id: `${phone}@onemoney`,
-            },
-            FIDataRange: {
-              from: "2021-10-01T00:00:00Z",
-              to: "2021-11-01T00:00:00Z",
-            },
-            consentMode: "STORE",
-            consentTypes: ["TRANSACTIONS", "PROFILE", "SUMMARY"],
-            fetchType: "PERIODIC",
-            Frequency: {
-              value: 30,
-              unit: "MONTH",
-            },
-            DataFilter: [
-              {
-                type: "TRANSACTIONAMOUNT",
-                value: "5000",
-                operator: ">=",
-              },
-            ],
-            DataLife: {
-              value: 1,
-              unit: "MONTH",
-            },
-            DataConsumer: {
-              id: "setu-fiu-id",
-            },
-            Purpose: {
-              Category: {
-                type: "string",
-              },
-              code: "101",
-              text: "Loan underwriting",
-              refUri: "https://api.rebit.org.in/aa/purpose/101.xml",
-            },
-            fiTypes: ["DEPOSIT"],
-          },
-          redirectUrl: "https://setu.co",
-        },
-        {
-          headers: {
-            "x-client-id": CLIENT_ID,
-            "x-client-secret": CLIENT_SECRET,
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res);
+      axios.post(`${SERVER}/api/createConsent/${phone}`)
+      .then(res => {
+        console.log(res.data);
+        resolve(res);
       })
-      .catch((err) => console.error(err));
+      .catch(err => {
+        console.error(err);
+        reject(err);
+      });
   });
 };
 
-window.createSession = createSession;
+export const getConsent = (consentID) => {
+  return new Promise((resolve, reject) => {
+      axios.get(`${SERVER}/api/getConsent/${consentID}`)
+      .then(res => {
+        console.log(res.data);
+        resolve(res);
+      })
+      .catch(err => {
+        console.error(err);
+        reject(err);
+      });
+  });
+};
+
+export const createDataSession = (consentID) => {
+  return new Promise((resolve, reject) => {
+      axios.post(`${SERVER}/api/createDataSession/${consentID}`)
+      .then(res => {
+        console.log(res.data);
+        resolve(res);
+      })
+      .catch(err => {
+        console.error(err);
+        reject(err);
+      });
+  });
+};
+
+export const getData = (dataSessionID) => {
+  return new Promise((resolve, reject) => {
+      axios.get(`${SERVER}/api/getData/${dataSessionID}`)
+      .then(res => {
+        console.log(res.data);
+        resolve(res);
+      })
+      .catch(err => {
+        console.error(err);
+        reject(err);
+      });
+  });
+};
+
+window.createConsent = createConsent;
+window.getConsent = getConsent;
+window.createDataSession = createDataSession;
+window.getData = getData;
