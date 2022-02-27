@@ -31,19 +31,29 @@ const Cards = (props) => {
       {mockData.Payload.map((bank) => {
         return bank.data.map((account, idx) => {
           cardCount++;
-          account.bankName = bank.fipID
+          account.bankName = bank.fipID;
           account.accountNumber = account.maskedAccNumber;
-          account.accountHolderName = account.decryptedFI.account?.profile?.holders?.holder[0]?.name;
-          account.accountHolderFirstName = account.decryptedFI.account?.profile?.holders?.holder[0]?.name?.split(" ")[0];
-          account.accountHolderLastName = account.decryptedFI.account?.profile?.holders?.holder[0]?.name?.split(" ")[2];
-          account.balance = account.decryptedFI.account?.transactions?.transaction[account.decryptedFI.account?.transactions?.transaction?.length - 1]?.currentBalance?.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-          account.backgroundColor = COLORS[cardCount]
+          account.accountHolderName =
+            account.decryptedFI.account?.profile?.holders?.holder[0]?.name;
+          account.accountHolderFirstName =
+            account.decryptedFI.account?.profile?.holders?.holder[0]?.name?.split(
+              " "
+            )[0];
+          account.accountHolderLastName =
+            account.decryptedFI.account?.profile?.holders?.holder[0]?.name?.split(
+              " "
+            )[2];
+          account.balance =
+            account.decryptedFI.account?.transactions?.transaction[
+              account.decryptedFI.account?.transactions?.transaction?.length - 1
+            ]?.currentBalance?.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          account.backgroundColor = COLORS[cardCount];
           return (
             <Card
               backgroundColor={COLORS[cardCount]}
               key={`${account.accountNumber.slice(8)} ${idx}`}
               onClick={() => {
-                props.setShowDetailedAccount(account)
+                props.setShowDetailedAccount(account);
               }}
             >
               <CardFlex1>

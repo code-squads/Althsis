@@ -1,18 +1,18 @@
 import styled from "styled-components";
 
 export const CardContainer = styled.div`
-    padding-top: 10%;
-    display: grid;
-    grid-template-columns: repeat(2, 44%);
-    grid-auto-rows: 160px;
-    grid-gap: 23px;
-    justify-content: center;
-    overflow-y: scroll;
-    overflow-y: -moz-scrollbars-none;
-    &::-webkit-scrollbar { 
-        width: 0 !important;
-    }
-`
+  padding-top: 10%;
+  display: grid;
+  grid-template-columns: repeat(2, 44%);
+  grid-auto-rows: 160px;
+  grid-gap: 23px;
+  justify-content: center;
+  overflow-y: scroll;
+  overflow-y: -moz-scrollbars-none;
+  &::-webkit-scrollbar {
+    width: 0 !important;
+  }
+`;
 export const Card = styled.div`
   height: 162px;
   background-color: ${(props) =>

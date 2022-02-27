@@ -13,7 +13,7 @@ import DetailedAccount from "./components/DetailedAccount";
 
 const App = () => {
   const theme = useContext(ThemeContext);
-  const [showDetailedAccount, setShowDetailedAccount] = useState(false)
+  const [showDetailedAccount, setShowDetailedAccount] = useState(false);
 
   return (
     <div className="App">
@@ -27,8 +27,15 @@ const App = () => {
             <FlexContainer2></FlexContainer2>
           </LeftContainer>
           <RightContainer>
-            {!showDetailedAccount &&<Cards setShowDetailedAccount={setShowDetailedAccount}/>}
-            {showDetailedAccount && <DetailedAccount account={showDetailedAccount} setShowDetailedAccount={setShowDetailedAccount}/>}
+            {!showDetailedAccount && (
+              <Cards setShowDetailedAccount={setShowDetailedAccount} />
+            )}
+            {showDetailedAccount && (
+              <DetailedAccount
+                account={showDetailedAccount}
+                setShowDetailedAccount={setShowDetailedAccount}
+              />
+            )}
           </RightContainer>
         </MainContainer>
       </ThemeProvider>
