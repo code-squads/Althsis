@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import { LeftContainer, MainContainer, RightContainer } from "./App.styled";
 import AccountsOverview from "./components/AccountsOverview";
@@ -9,9 +9,11 @@ import { ThemeContext, ThemeProvider } from "./context/ThemeContext";
 import LoanView from "./components/LoanView";
 import "./colors.css";
 import "./App.css";
+import DetailedAccount from "./components/DetailedAccount";
 
 const App = () => {
   const theme = useContext(ThemeContext);
+  const [showDetailedAccount, setShowDetailedAccount] = useState(false);
 
   return (
     <div className="App">
@@ -27,7 +29,15 @@ const App = () => {
             </FlexContainer2>
           </LeftContainer>
           <RightContainer>
-            <Cards></Cards>
+            {!showDetailedAccount && (
+              <Cards setShowDetailedAccount={setShowDetailedAccount} />
+            )}
+            {showDetailedAccount && (
+              <DetailedAccount
+                account={showDetailedAccount}
+                setShowDetailedAccount={setShowDetailedAccount}
+              />
+            )}
           </RightContainer>
         </MainContainer>
       </ThemeProvider>
