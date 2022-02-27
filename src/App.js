@@ -6,7 +6,6 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import Navbar from "./components/Navbar";
 import { AuthProvider } from './context/authorisation';
 import { ThemeProvider } from "./context/ThemeContext";
 
@@ -23,7 +22,6 @@ const App = () => {
       <ThemeProvider>
         <AuthProvider>
           <BrowserRouter>
-            <Navbar />
               <Switch>
                 <Route exact path="/" component={Dashboard} />
                 <Route exact path="/login" component={Login} />
