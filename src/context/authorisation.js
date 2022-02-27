@@ -3,20 +3,17 @@ import React, { createContext, useState, useEffect } from "react";
 const AuthContext = createContext({});
 
 const AuthProvider = (props) => {
-
   const [loggedIn, setLoggedIn] = useState(false);
   const [entityInfo, setEntityInfo] = useState(null);
-  const [data, setData] = useState(null)
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     // Pull saved login state from localStorage
-    const authToken = localStorage.getItem('authToken');
-
+    const authToken = localStorage.getItem("authToken");
   }, []);
 
-
   const login = (pk, authorityType, entityInfo) => {
-    if(loggedIn){
+    if (loggedIn) {
       console.log("Already logged in !");
       return false;
     }
@@ -25,9 +22,8 @@ const AuthProvider = (props) => {
     return true;
   };
 
-
   const logout = () => {
-    if(!loggedIn){
+    if (!loggedIn) {
       console.log("Already logged out !");
       return false;
     }
@@ -39,13 +35,12 @@ const AuthProvider = (props) => {
     return true;
   };
 
-
   const contextValue = {
     loggedIn,
     entityInfo,
     data,
     login,
-    logout
+    logout,
   };
 
   return <AuthContext.Provider value={contextValue} {...props} />;
