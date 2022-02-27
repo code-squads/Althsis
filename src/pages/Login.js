@@ -1,6 +1,6 @@
-import React from 'react'
-import { useAuth } from '../context/authorisation';
-import { createSession } from '../apis/setu';
+import React from "react";
+import { useAuth } from "../context/authorisation";
+import { createSession } from "../apis/setu";
 import {
   Container,
   LeftContainer,
@@ -13,42 +13,35 @@ import {
   Note,
   RightContainer,
   Slogan,
-  WebsiteName
-} from './Login.styled'
+  WebsiteName,
+} from "./Login.styled";
 
 const Login = () => {
   const auth = useAuth();
-  
+
   return (
     <Container>
       <LeftContainer>
         <img
-          src='./sprinkles.svg'
-          style={{marginTop: '52px', position: 'absolute'}}
+          src="./sprinkles.svg"
+          style={{ marginTop: "52px", position: "absolute" }}
         />
         <WebsiteName>Althsis</WebsiteName>
         <Slogan>Analyze your financial wealth</Slogan>
-        <img 
-          src='./althsisPreview.png'
-          style={{marginTop: '100px'}}
-        />
+        <img src="./althsisPreview.png" style={{ marginTop: "100px" }} />
       </LeftContainer>
       <RightContainer>
         <MadeFor>Made for</MadeFor>
-        <img 
-          src='./hackathon.png'
-          style={{marginTop: '10px'}}
-        />
+        <img src="./hackathon.png" style={{ marginTop: "10px" }} />
         <NameLabel>Name*</NameLabel>
-        <NameInput/>
+        <NameInput />
         <MobileLabel>Mobile*</MobileLabel>
-        <MobileInput/>
+        <MobileInput />
         <LoginButton>Login</LoginButton>
         <Note>Note : Select all your bank accounts for detailed analysis</Note>
       </RightContainer>
     </Container>
-    
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
