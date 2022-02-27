@@ -13,6 +13,7 @@ import SuccessModal from '../components/SucessModal'
 import { FlexContainer1, FlexContainer2 } from "../LeftContainer.styled";
 import { MainContainer, LeftContainer, RightContainer } from "../App.styled";
 import { createDataSession, getConsent, getData } from "../apis/setu";
+import BankData from '../BankData.json'
 
 const Dashboard = () => {
   const theme = useContext(ThemeContext);
@@ -45,14 +46,17 @@ const Dashboard = () => {
           .then((result) => {
             console.log(result.data.id)
             console.log(result)
-            getData(result.data.id)
-            .then((result) => {
-              localStorage.setItem('bankData', JSON.stringify(result.data))
-              setBankData(result.data)
-            })
-            .catch((error) => {
-              console.log(error)
-            })
+            localStorage.setItem('bankData', JSON.stringify(BankData))
+            setBankData(BankData);
+
+            // getData(result.data.id)
+            // .then((result) => {
+            //   localStorage.setItem('bankData', JSON.stringify(result.data))
+            //   setBankData(result.data)
+            // })
+            // .catch((error) => {
+            //   console.log(error)
+            // })
           })
           .catch((error) => {
             console.log(error)

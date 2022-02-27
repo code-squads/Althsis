@@ -109,10 +109,11 @@ export const TransactionSubFlex1 = styled.div`
   font-size: 16px;
   line-height: 19px;
   letter-spacing: -0.5px;
-  color: #404040;
+  color: ${props => props.theme.textColor};
 `;
 export const TransactionTime = styled.div`
   margin-left: 22px;
+  color: ${props => props.theme.textColor};
 `;
 export const TransactionValue = styled.div`
   margin-left: auto;
@@ -129,7 +130,7 @@ export const TransactionDetailsContainer = styled.div`
   font-size: 12px;
   line-height: 15px;
   letter-spacing: -0.5px;
-  color: #505050;
+  color: ${props => props.theme.textColor};
   margin-left: 22px;
   padding-right: 10px;
 `;
