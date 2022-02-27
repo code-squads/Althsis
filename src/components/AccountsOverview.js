@@ -20,11 +20,11 @@ import {
 } from "./AccountsOverview.styled";
 
 import { upiregex } from "../constants/regex";
-import { data } from "../constants/dummyData";
-import fullData from "../BankData.json";
+import bankData from "../BankData.json";
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import { THEME_VARIABLES } from "../constants/THEMES";
+import { ACC_COLORS } from "../constants/colors";
 
 ChartJS.register(
   Tooltip,
@@ -77,28 +77,60 @@ const AccountsOverview = () => {
   const { theme } = useContext(ThemeContext);
 
   const [topTransactionsData, setTopTransactionsData] = useState(null);
+  const [balances, setBalances] = useState(null);
 
   useEffect(() => {
     // Fetch & process all the data here
     const allTransactions = [];
-    for (const tx of fullData.Payload[0].data) {
+    for (const tx of bankData.Payload[0].data) {
       allTransactions.push(...tx.decryptedFI.account.transactions.transaction);
     }
-    console.log(allTransactions);
     window.allTransactions = allTransactions;
     const top5UPIs = topXTransactions(allTransactions, 5);
     console.log("Top 5 UPIs :", top5UPIs);
     setTopTransactionsData(top5UPIs);
+    window.banks = bankData.Payload;
+    const allBalances = [];
+    console.log(bankData.Payload[0].data[0]);
+    bankData.Payload.forEach((bank) => {
+      bank.data.forEach((account) =>
+        allBalances.push({
+          acc: ` ${account.maskedAccNumber.slice(6)}`,
+          balance: Number(
+            Number(
+              account.decryptedFI.account?.transactions?.transaction[
+                account.decryptedFI.account?.transactions?.transaction?.length -
+                  1
+              ]?.currentBalance
+            ).toFixed(0)
+          ),
+        })
+      );
+    });
+    setBalances(allBalances);
   }, []);
 
   useEffect(() => {
-    // Create balance pie chart
+    if (!balances) return;
+
+    const totalBalance = balances.reduce(
+      (prevBal, currAcc) => prevBal + currAcc.balance,
+      0
+    );
     if (balanceChartDOM.current) {
       if (balanceChartObj) balanceChartObj?.destroy();
-
       const newBalanceChartObj = new ChartJS(balanceChartDOM.current, {
         type: "pie",
-        data: data,
+        data: {
+          labels: balances.map((acc) => acc.acc),
+          datasets: [
+            {
+              label: "Balance (₹): ",
+              backgroundColor: ACC_COLORS,
+              data: balances.map((acc) => acc.balance),
+            },
+          ],
+        },
         plugins: [ChartDataLabels],
         options: {
           title: {
@@ -112,7 +144,7 @@ const AccountsOverview = () => {
             datalabels: {
               color: "#ffffff",
               formatter: (value) => {
-                if (value / data.totalBalance >= 0.1) return "₹ " + value;
+                if (value / totalBalance >= 0.2) return "₹ " + value;
                 return "";
               },
             },
@@ -124,7 +156,7 @@ const AccountsOverview = () => {
     return () => {
       if (balanceChartObj && balanceChartObj.destroy) balanceChartObj.destroy();
     };
-  }, [theme]);
+  }, [theme, balances]);
 
   useEffect(() => {
     if (!topTransactionsData) return;
@@ -134,7 +166,7 @@ const AccountsOverview = () => {
       if (freqTxChartObj) freqTxChartObj?.destroy();
 
       const allTransactions = [];
-      for (const tx of fullData.Payload[0].data) {
+      for (const tx of bankData.Payload[0].data) {
         allTransactions.push(
           ...tx.decryptedFI.account.transactions.transaction
         );
@@ -231,7 +263,17 @@ const AccountsOverview = () => {
               <ImpText> 5 </ImpText>
               <br />
               Net balance:
-              <ImpText>₹ {data.totalBalance}</ImpText>
+              <ImpText>
+                ₹
+                {balances
+                  ? Number(
+                      balances.reduce(
+                        (prevBal, currAcc) => prevBal + currAcc.balance,
+                        0
+                      )
+                    )
+                  : 0}
+              </ImpText>
             </div>
           </div>
           <FrequentTxContainer>

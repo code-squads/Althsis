@@ -5,7 +5,7 @@ export const BalanceChartCanvas = styled.canvas`
   margin: auto;
 `;
 export const FreqTxChartCanvas = styled.canvas`
-  max-width: 450px;
+  max-width: 400px;
   background-color: ${(props) => props.theme.background};
 `;
 
