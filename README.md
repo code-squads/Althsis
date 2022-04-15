@@ -8,7 +8,7 @@
 
 #### PS: We secured 3rd prize in this hackathon
 - Closing ceremony - https://www.youtube.com/watch?v=g_mJa2sTN7c&t=1959s
-- All winers - https://cic.niti.gov.in/fintech-open-month-hackathon.html#Winners
+- All winners - https://cic.niti.gov.in/fintech-open-month-hackathon.html#Winners
 
 
 #### Team Name - Code Squad
