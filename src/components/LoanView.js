@@ -34,9 +34,9 @@ const LoanView = () => {
   const [avgBalance, setAvgBalance] = useState(0);
 
   const MonthlyArrays = avgMonBalance(props)[1];
-  console.log(`MonthlyArrays : ${MonthlyArrays}`);
+  // console.log(`MonthlyArrays : ${MonthlyArrays}`);
   const formattedSavings = MonthlyArrays.map((e) => nFormatter(e));
-  console.log(`Formatted : ${formattedSavings}`);
+  // console.log(`Formatted : ${formattedSavings}`);
 
   useEffect(() => {
     setAvgBalance(avgMonBalance(props)[0]);

@@ -99,7 +99,7 @@ export const avgMonBalance = (props) => {
       // Monthly Balances of Transactionarray
       const perMonthsBal = monthlyBalCalculator(transactionsPerBank);
       // console.log(perMonthsBal);
-      console.log(`Pushing : ${perMonthsBal}`);
+      // console.log(`Pushing : ${perMonthsBal}`);
       ArrayofBanks.push(perMonthsBal);
 
       // Calculating Average of those Monthly Balances
@@ -120,7 +120,7 @@ export const avgMonBalance = (props) => {
   const SavingsArray = first.map((e, index) => {
     return e + second[index] + third[index];
   });
-  console.log(`Savings : ${SavingsArray}`);
+  // console.log(`Savings : ${SavingsArray}`);
 
   const newArr = [];
   for (let i = 0; i < SavingsArray.length; i += 2) {

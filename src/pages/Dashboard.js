@@ -25,14 +25,14 @@ const Dashboard = () => {
  
   useEffect(() => {
     const savedBankData = localStorage.getItem('bankData')
-    if(savedBankData) {
-      setBankData(JSON.parse(savedBankData))
-      return
-    }
+    // if(savedBankData) {
+    //   setBankData(JSON.parse(savedBankData))
+    //   return
+    // }
     if(localStorage.getItem('consentId')){
       getConsent(localStorage.getItem('consentId'))
       .then((result) => {
-        console.log(result)
+        console.log("Got consent", result)
         if(result.data.status === 'PENDING') {
           setShowPendingModal(true)
         }
@@ -49,14 +49,16 @@ const Dashboard = () => {
             localStorage.setItem('bankData', JSON.stringify(BankData))
             setBankData(BankData);
 
-            // getData(result.data.id)
-            // .then((result) => {
-            //   localStorage.setItem('bankData', JSON.stringify(result.data))
-            //   setBankData(result.data)
-            // })
-            // .catch((error) => {
-            //   console.log(error)
-            // })
+            getData(result.data.id)
+              .then((result) => {
+                console.log("Get data response:", result);
+                localStorage.setItem('bankData', JSON.stringify(result.data))
+                // setBankData(result.data)
+              })
+              .catch((error) => {
+                console.log("Get data err:", error);
+                console.log(error)
+              })
           })
           .catch((error) => {
             console.log(error)
