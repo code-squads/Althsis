@@ -1,2 +1,2 @@
-export const SERVER = "https://althsisserver.herokuapp.com";
-// export const SERVER = "http://localhost:5000";
+export const SERVER = process.env.SERVER_URL || "https://althsisserver.onrender.com";
+// export const SERVER = process.env.SERVER_URL || "http://localhost:5000";
